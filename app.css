@@ -1,0 +1,152 @@
+html {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    font-family: "Monument Extended", Arial, Helvetica, sans-serif;
+}
+
+body {
+    color: white;
+    margin: 0;
+    padding: 0;
+    perspective: 1px;
+    transform-style: preserve-3d;
+    height: 100%;
+    width: 100%;
+    overflow-y: scroll;
+    overflow-x: hidden;
+}
+
+header {
+    box-sizing: border-box;
+    min-height: 100vh;
+    position: relative;
+    transform-style: inherit;
+    width: 100vw;
+    text-align: center;
+    text-transform: uppercase;
+}
+
+header h1 {
+    margin: 0;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 40px;
+}
+
+header,
+header:before {
+    background: 50% 50% / cover;
+}
+
+header::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    display: block;
+    background: url(sfondo.jpg);
+    background-size: cover;
+    transform-origin: center center 0;
+    transform: translateZ(-1px) scale(2);
+    z-index: -1;
+    min-height: 100vh;
+}
+
+.container {
+    z-index: 2;
+    position: absolute;
+    top: 100vh;
+    background: #2A52BE;
+    line-height: 30px;
+    font-weight: lighter;
+    padding: 40px;
+    color: white;
+}
+
+.header__button {
+	z-index: 2;
+	width: 40px;
+	height: 40px;
+	border-radius: 50%;
+	background-color: #007BB8;
+	border: 0;
+	cursor: pointer;
+	position: absolute;
+	right: 0;
+	top: -10px;
+	margin: 20px;
+	outline: none;
+	animation-duration: 300ms;
+	animation-timing-function: ease;
+}
+
+.header__button[data-open="true"] {
+	background-color: #000;
+	animation-name: scale;
+}
+
+.header__button[data-open="false"] {
+	transition: background-color 250ms linear;
+}
+
+@keyframes scale {
+	from {
+		transform: scale(0);
+	}
+
+	to {
+		transform: scale(100%);
+	}
+}
+
+
+
+.header__nav {
+	background-color: #007BB8;
+	position: fixed;
+	overflow: hidden;
+	z-index: 1;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	box-sizing: border-box;
+	padding: 40px 30px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	visibility: hidden;
+	clip-path: circle(var(--radius) at calc(100% - 55px) 47px);
+}
+
+.header__nav[data-active="true"] {
+	visibility: visible;
+}
+
+.header__menu {
+	padding: 0;
+	margin: 0;
+}
+
+.header__menu > .header__menu-item {
+	font-size: 10vh;
+  padding-top: 50px;
+}
+
+.header__menu > .header__menu-item:not(:last-of-type) {
+	margin-bottom: 0.5em;
+}
+
+.header__menu-item a {
+	letter-spacing: -4px;
+	font-weight: 300 !important;
+	color: #000;
+	text-decoration: none;
+}

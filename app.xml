@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<widget
+        id        = "Info_Japan"
+        version   = "1.0.0">
+
+<resources>
+  <string name"app_name">Info Japan</string>
+
+    <description>
+        Un'applicazione per conoscere tutto quello da sapere su manga e anime.
+    </description>
+
+    <author href="http://phonegap.com" email="support@phonegap.com">
+        DeveWork Team
+    </author>
+  </resources>

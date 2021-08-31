@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Block Reveal Effect On Scroll</title>
+        <link rel="stylesheet" href="secondPage.css" />
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+        <script src="http://code.jquery.com/jquery-3.3.1.js"></script>
+      <link href="https://fonts.googleapis.com/css?family=Poppins:200,300,400,700,900" rel="stylesheet">
+    </head>
+    <body>
+        <div class="smooth-scroll-wrapper">
+          <nav>
+            <span id="brand">
+                  <a href="secondPage.html">Brand</a>
+            </span>
+
+            <ul id="menu">
+                  <li><a href="app.html">Home</a></li>
+                  <li><a href="#">About</a></li>
+                  <li><a href="#">Contact</a></li>
+                  <li><a href="#">FAQ</a></li>
+            </ul>
+
+            <div id="toggle">
+                  <div class="span" id="one"></div>
+                  <div class="span" id="two"></div>
+                  <div class="span" id="three"></div>
+            </div>
+      </nav>
+
+      <div id="resize">
+            <ul id="menu">
+                  <li><a href="app.html">Home</a></li>
+                  <li><a href="#">About</a></li>
+                  <li><a href="#">Contact</a></li>
+                  <li><a href="#">FAQ</a></li>
+            </ul>
+      </div>
+            <div class="content">
+                 <div class="title-page">
+                   <h1>I MANGA</h1>
+                 </div>
+                <div class="container">
+                    <h1 class="text">Li hai visti senza rendertene conto</h1>
+                    <div class="img">
+                        <img src="img-one.jpg" alt="" />
+                    </div>
+                    <p class="text">
+                      Ti è mai capitato di notare molte autovetture di un certo modello solo dopo che tu o un tuo conoscente l'avete comprato, mentre prima non le vedevi neanche?
+                      Ecco, qui è proprio la stessa cosa.
+                      Se sei nato dagli anni 80’ in poi avrai sicuramente visto un anime in TV.
+                      Molto probabilmente anche senza rendertene conto.
+                      Hai presente quei cartoni animati che vedevi da piccolo su Italia Uno prima di andare a scuola:
+                      Saylor Moon, Holly e Benji, Dragon Ball e Rossana?
+                      Ecco, sono tutti anime di produzione giapponese, ma prima di parlare degli anime dobbiamo introdurre anche i manga.
+                    </p>
+                </div>
+                <div class="container">
+                    <h1 class="text"> Fumetti o manga?</h1>
+                    <div class="img">
+                        <img src="img-two.jpg" alt="" />
+                    </div>
+                    <p class="text">
+                      I manga giapponesi sono il corrispondente dei fumetti in occidente, l’unica differenza è che sono prodotti in Giappone e sono disegnati con una tecnica particolare.
+                      Ti saranno sicuramente venuti in mente fumetti come Bat Man o gli Avengers ma stiamo parlando di due cose differenti,
+                      tuttavia per adesso soffermiamoci sulla loro storia.
+                    </p>
+                </div>
+
+                <div class="container">
+                    <h1 class="text">La storia</h1>
+                    <div class="img">
+                        <img src="img-three.jpg" alt="" />
+                    </div>
+                    <p class="text">
+                      Il termine manga (漫画) letteralmente vuol dire immagini derisorie e in Giappone identifica tutti i disegni realizzati sotto forma di fumetti.
+                      La sua origine si colloca nel XVIII secolo e si esemplifica nel libro d’illustrazioni Shiji no yukikai di Santo Kyoden e nell’ Hyakujo di Aikawa Minwa:
+                      siamo in piena epoca Edo, in un contesto dalla forte componente tradizionalista.
+                      Il primo a usare il termine manga per definire alcune sue produzioni è stato, però, il celebre artista Hokusai, vissuto tra 1760 e 1849.<br>
+                      Nota: Manga non è l’unico vocabolo usato in Giappone per indicare il fumetto, sebbene sia quello di uso più comune: c’è anche toba-e e ponchi-e.
+                    </p>
+                </div>
+                <div class="container">
+                    <h1 class="text">Come leggere un manga?</h1>
+                    <div class="img">
+                    </div>
+                    <p class="text">
+                      <img src="ordine-tavole.png" alt="" />
+                      Il contenuto dei manga, prima di essere pubblicato su quest’ultimi viene presentato su volumi di circa 200 pagine denominati tankōbon.
+                      Per alcuni esempi possiamo citare il Weekly Shounen Jump e il Shonen Magazine.
+                      Molto importante da sapere è che i manga, al contrario dei fumetti occidentali vanno letti da destra a sinistra incluse le tavole (vignette),
+                      che andranno lette come nella foto accanto.
+                    </p>
+                </div>
+            </div>
+        </div>
+        <script>
+            const body = document.body,
+                scrollWrap = document.getElementsByClassName("smooth-scroll-wrapper")[0],
+                height = scrollWrap.getBoundingClientRect().height - 1,
+                speed = 0.04;
+
+            var offset = 0;
+
+            body.style.height = Math.floor(height) + "px";
+
+            function smoothScroll() {
+                offset += (window.pageYOffset - offset) * speed;
+
+                var scroll = "translateY(-" + offset + "px) translateZ(0)";
+                scrollWrap.style.transform = scroll;
+
+                callScroll = requestAnimationFrame(smoothScroll);
+            }
+
+            smoothScroll();
+
+            $(function () {
+                var elements = $(".text, .img").toArray();
+                $(window).scroll(function () {
+                    elements.forEach(function (item) {
+                        if ($(this).scrollTop() >= $(item).offset().top - 400) {
+                            $(item).addClass("reveal");
+                        }
+                    });
+                });
+                elements.forEach(function (item) {
+                    if ($(this).scrollTop() >= $(item).offset().top - 400) {
+                        $(item).addClass("reveal");
+                    }
+                });
+            });
+        </script>
+
+        <script>
+
+     $("#toggle").click(function() {
+
+     $(this).toggleClass('on');
+     $("#resize").toggleClass("active");
+
+     });
+
+
+     </script>
+    </body>
+</html>
